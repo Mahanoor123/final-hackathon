@@ -20,8 +20,7 @@ const Login = () => {
 
     console.log("submitted ");
 
-
-     try {
+    try {
       const { data } = await axios.post(
         `${import.meta.env.VITE_HOST_URL}/auth/login`,
         { email: formData.email, password: formData.password }

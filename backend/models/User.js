@@ -48,6 +48,6 @@ userSchema.methods.comparePassword = function (plainTextPass) {
   return bcrypt.compare(plainTextPass, this.password);
 };
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.models.user || mongoose.model("user", userSchema);
 
 export default User;

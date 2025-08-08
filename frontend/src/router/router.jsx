@@ -3,21 +3,20 @@ import App from "../App";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
-import Unauthorized from "../notfound/Unauthorized";
-
-
+import HijabGallery from "../pages/HijabGallery";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [{ path: "", index: true, element: <Home /> },
+      { path: "/hijabs", index: true, element: <HijabGallery /> }
+      
     ],
   },
  
   { path: "/login", element: <Login/> },
   { path: "/register", element: <Register /> },
-  { path: "/unauthorized", element: <Unauthorized /> },
 
 ]);
 

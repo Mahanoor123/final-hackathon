@@ -5,13 +5,16 @@ const port = 5000
 import dbConnection from './config/db.js';
 import dotenv from 'dotenv';
 import authRoutes from "./routes/authRoutes.js"
+import hijabRoutes from "./routes/hijabRoutes.js"
+import reviewRoutes from "./routes/reviewRoutes.js"
 
 
 
 dotenv.config();
 dbConnection();
 
-app.use(express.json())
+app.use(express.json());
+
 
 app.use(cors({
   origin: "http://localhost:5173", 
@@ -19,6 +22,10 @@ app.use(cors({
 }));
 
 app.use("/api/auth", authRoutes);
+app.use("/api/hijabs", hijabRoutes);
+app.use("/api/reviews", reviewRoutes);
+
+
 
 
 app.get('/', (req, res) => res.send('Hello World!'))
