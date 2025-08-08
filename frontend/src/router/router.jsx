@@ -12,7 +12,6 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       { path: "", index: true, element: <Home /> },
-      { path: "/hijabs", element: <HijabGallery /> },
     ],
   },
 

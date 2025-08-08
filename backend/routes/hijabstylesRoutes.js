@@ -1,9 +1,8 @@
 import express from "express";
 import { getAllHijabstyles } from "../controllers/hijabstyleController.js";
-import { addReview } from "../controllers/reviewControllers.js";
 
 const router = express.Router();
 
-router.post("/", addReview);
+router.get("/", getAllHijabstyles);
 
 export default router;
