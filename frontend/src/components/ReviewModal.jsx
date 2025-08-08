@@ -3,16 +3,14 @@ import React, { useState } from "react";
 import Swal from "sweetalert2";
 import { useAuth } from "../contexts/authContext";
 
-const ReviewModal = ({ isOpen, onClose, productId }) => {
-
-  const {user} = useAuth();
+const ReviewModal = () => {
+  const { user } = useAuth();
 
   const [formData, setFormData] = useState({
     rating: 5,
     review: "",
   });
 
-  if (!isOpen) return null;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -26,17 +24,15 @@ const ReviewModal = ({ isOpen, onClose, productId }) => {
       const { data } = await axios.post(
         `${import.meta.env.VITE_HOST_URL}/reviews`,
         {
-          productId,
           userId: user?._id,
           rating: formData.rating,
           comment: formData.review,
-        },
-
+        }
       );
 
       if (data.success) {
         Swal.fire("Thank you!", "Your review has been posted.", "success");
-        onClose();
+
       } else {
         Swal.fire("Failed!", data.message || "Could not post review.", "error");
       }
@@ -88,7 +84,6 @@ const ReviewModal = ({ isOpen, onClose, productId }) => {
             <button
               type="button"
               className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
-              onClick={onClose}
             >
               Cancel
             </button>

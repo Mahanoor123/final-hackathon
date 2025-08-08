@@ -1,27 +1,10 @@
 import React, { useState } from "react";
 
 import { useAuth } from "../contexts/authContext";
-import ReviewModal from "./ReviewModal";
+import { NavLink } from "react-router-dom";
 
 const HijabCard = ({ hijab }) => {
   const { user } = useAuth();
-
-
-const hijabImages = [
-  "/hijab.webp",
-  "/hijab2.jpg",
-  "/hijab3.jpg",
-  "/hijab4.jpg",
-];
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleReview = () => {
-
-    setIsModalOpen(false);
-  };
-
-
 
   return (
     <div>
@@ -46,21 +29,13 @@ const hijabImages = [
       {/* Overlay Button */}
       <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 flex justify-center items-center transition-opacity duration-300">
         {user && (
-          <button
-            onClick={() => setIsModalOpen(true)}
-            className="bg-pink-600 text-white px-4 py-2 rounded-full shadow-md hover:bg-pink-700 transition"
-          >
-            Post reviews
-          </button>
+          <NavLink to="add-review">
+            <button className="bg-pink-600 text-white px-4 py-2 rounded-full shadow-md hover:bg-pink-700 transition">
+              Post reviews
+            </button>
+          </NavLink>
         )}
       </div>
-
-      {/* Review Modal */}
-      <ReviewModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        onClick={handleReview}
-      />
     </div>
   );
 };
