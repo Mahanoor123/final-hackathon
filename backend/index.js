@@ -19,9 +19,9 @@ app.use(cors({
   credentials: true
 }));
 
-app.use("/api/auth", authRoutes);
-app.use("/api/hijabstyles", hijabstylesRoutes);
-app.use("/api/reviews", reviewRoutes);
+app.use("api/auth", authRoutes);
+app.use("api/hijabstyles", hijabstylesRoutes);
+app.use("api/reviews", reviewRoutes);
 
 
 
